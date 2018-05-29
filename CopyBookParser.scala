@@ -61,7 +61,7 @@ val entry=(field.pattern.pattern + "(" + occurs.pattern.pattern + ")?(" + index.
     }
     val RedefineRemovedCb=ParsedCb.filter(cur => !RedefFieldsNestedToo.exists(rf=> rf == cur.field))
 
-    //Remove Occur entries as appropriate
+    //Repeat Occur entries as appropriate
     //In the first pass, repeat entries with both occurs and pics
     val OccursPicCb= RedefineRemovedCb.foldLeft(List[CopyBookEntry]()) {
       case (List(),cur) => List(cur)
@@ -71,7 +71,7 @@ val entry=(field.pattern.pattern + "(" + occurs.pattern.pattern + ")?(" + index.
       }
       case (ls,cur) => ls:+cur
     }
-    //In the second pass Remove occurs groups. will not handle nested groups
+    //In the second pass Repeat occurs groups. will not handle nested groups
     var occursGrplist=List[CopyBookEntry]()
     var occursGrplevel=0
     var occursTimes=0
